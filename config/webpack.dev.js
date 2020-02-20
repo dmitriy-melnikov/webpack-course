@@ -1,4 +1,4 @@
-const path = require("path")
+const path = require("path");
 
 module.exports = {
   entry: {
@@ -12,5 +12,17 @@ module.exports = {
   },
   devServer: {
     contentBase: "dist"
-  }
-}
+  },
+  module: {
+		rules: [
+      {
+        test: /\.css$/,
+				exclude: /node_modules/,
+        use: ["style-loader", "css-loader"
+					/*{loader: "style-loader"},
+          {loader: "css-loader"}*/
+				]
+      }
+    ]
+	}
+};
