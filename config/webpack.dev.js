@@ -1,8 +1,9 @@
-const path = require("path")
+const path = require("path");
 
 module.exports = {
   entry: {
-    main: "./src/main.js"
+    //main: ["babel-polyfill", "./src/main.js"]
+    main: ["./src/main.js"]
   },
   mode: "development",
   output: {
@@ -16,6 +17,11 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ["babel-loader"]
+      },
       {
         test: /\.css$/,
         use: [{ loader: "style-loader" }, { loader: "css-loader" }]
