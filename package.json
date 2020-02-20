@@ -1,0 +1,25 @@
+{
+  "name": "webpack-course",
+  "version": "1.0.0",
+  "description": "Code for Webpack 4 course.  Version 3 is at https://github.com/lawwantsin/webpack-course-v3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmitriy-melnikov/webpack-course.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dmitriy-melnikov/webpack-course/issues"
+  },
+  "homepage": "https://github.com/dmitriy-melnikov/webpack-course#readme",
+  "dependencies": {
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  }
+}
