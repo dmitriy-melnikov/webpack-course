@@ -1,3 +1,3 @@
-require('./main.css');
-alert('jelllo');
-//webpack-dev-server --config=config/webpack.dev.js
+require("./main.css");
+require("./images/link.jpg");
+require("./index.html");
