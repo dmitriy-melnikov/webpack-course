@@ -14,7 +14,7 @@ renderApp(Counter);
 if(module.hot) {
 	module.hot.accept("./Counter.js", () => {
 		const NewCounter = require("./Counter").default;
-		renderComponent(NewCounter);
+		renderApp(NewCounter);
 	})
 }
 
