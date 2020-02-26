@@ -15,6 +15,13 @@ module.exports = {
     path: path.resolve(__dirname, "../dist"),
     publicPath: "/"
   },
+	devServer: {
+		contentBase: "dist",
+		overlay: true,
+		stats: {
+			colors: true
+		}
+	},
   module: {
     rules: [
       {
@@ -64,12 +71,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('production')
-      }
-    }),
-		new CleanWebpackPlugin(),
+		//new CleanWebpackPlugin(),
     new OptimizeCssAssetsWebpackPlugin(),
 		new MiniCssWebpackPlugin({
       filename: "[name]-[contenthash].css",
@@ -79,6 +81,12 @@ module.exports = {
       template: "./src/index.ejs",
       inject: true,
       title: "Link's Journal"
-    })
+    }),
+		new webpack.DefinePlugin({
+			PRODUCTION: JSON.stringify(true)
+			/*'process.env': {
+				'NODE_ENV': JSON.stringify('production')
+			}*/
+		}),
   ]
 };
