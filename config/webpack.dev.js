@@ -1,6 +1,10 @@
 const path = require("path")
 const webpack = require("webpack")
-const HTMLWebpackPlugin = require("html-webpack-plugin")
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HTMLWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+//const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -18,6 +22,7 @@ module.exports = {
       colors: true
     }
   },
+	mode: 'development',
   devtool: "source-map",
   module: {
     rules: [
@@ -30,28 +35,31 @@ module.exports = {
           }
         ]
       },
-      {
-        test: /\.css$/,
-        use: [
-          { loader: "style-loader" },
-          {
-            loader: "css-loader",
-            query: {
-              modules: true,
-              localIdentName: "[name]__[local]__[hash:base64:5]"
-            }
-          }
-        ]
-      },
-      {
-        test: /\.sass$/,
-        use: [
-          { loader: "style-loader" },
-          { loader: "css-loader" },
-          { loader: "postcss-loader" },
-          { loader: "sass-loader" }
-        ]
-      },
+			{
+				test: /\.sass$/,
+				use: [
+					MiniCssExtractPlugin.loader,
+					{
+						loader: 'css-loader',
+						options: {
+							modules: {
+								mode: 'local',
+								localIdentName: '[local]',
+							}
+						}
+					},
+					{
+						loader: 'postcss-loader',
+						options: {
+							plugins: [
+								require('autoprefixer'),
+							],
+						},
+					},
+					'resolve-url-loader',
+					'sass-loader',
+				]
+			},
       {
         test: /\.jpg$/,
         use: [
@@ -93,12 +101,21 @@ module.exports = {
     ]
   },
   plugins: [
+		new ProgressBarPlugin({
+			format: '  build [:bar] ' + ':percent' + ' (:elapsed seconds)',
+			clear: false,
+		}),
+		//new CleanWebpackPlugin(),
+		new HTMLWebpackPlugin({
+			template: "./src/index.ejs",
+			inject: true,
+			title: "Link's Journal"
+		}),
     new webpack.HotModuleReplacementPlugin(), // Enable HMR
     new webpack.NamedModulesPlugin(),
-    new HTMLWebpackPlugin({
-      template: "./src/index.ejs",
-      inject: true,
-      title: "Link's Journal"
-    })
+		new MiniCssExtractPlugin({
+			filename: '[name].css',
+			chunkFilename: '[id].css'
+		}),
   ]
-}
+};
