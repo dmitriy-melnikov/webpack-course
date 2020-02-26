@@ -1,28 +1,19 @@
-const path = require("path")
-const webpack = require("webpack")
-const HTMLWebpackPlugin = require("html-webpack-plugin")
-const isProd = process.env.NODE_ENV === "production"
+const path = require("path");
+const webpack = require("webpack");
+const HTMLWebpackPlugin = require("html-webpack-plugin");
+const MiniCssWebpackPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: [
-			"babel-runtime/regenerator",
-			"webpack-hot-middleware/client?reload=true",
-      "./src/main.js"
-    ]
+    main: ["./src/main.js"]
   },
-  mode: "development",
+  mode: "production",
   output: {
     filename: "[name]-bundle.js",
     path: path.resolve(__dirname, "../dist"),
     publicPath: "/"
-  },
-  devServer: {
-    contentBase: "dist",
-    overlay: true,
-    stats: {
-      colors: true
-    }
   },
   module: {
     rules: [
@@ -37,13 +28,18 @@ module.exports = {
       },
       {
         test: /\.css$/,
+				exclude: /node_modules/,
         use: [
+					//MiniCssWebpackPlugin.loader,
           {
-            loader: "style-loader"
+            loader: MiniCssWebpackPlugin.loader
           },
           {
-            loader: "css-loader"
-          }
+            loader: "css-loader",
+						options: {
+              minimize: true
+            }
+					}
         ]
       },
       {
@@ -68,11 +64,21 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+		new CleanWebpackPlugin(),
+    new OptimizeCssAssetsWebpackPlugin(),
+		new MiniCssWebpackPlugin({
+      filename: "[name]-[contenthash].css",
+      chunkFilename: "[id].css"
+    }),
     new HTMLWebpackPlugin({
       template: "./src/index.ejs",
       inject: true,
       title: "Link's Journal"
     })
   ]
-}
+};
