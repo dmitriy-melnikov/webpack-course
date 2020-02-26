@@ -78,7 +78,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/lib/css-base.js */ \"./node_modules/css-loader/lib/css-base.js\")(false);\n// imports\n\n\n// module\nexports.push([module.i, \"body {\\n  margin: 0;\\n  background-color: #444;\\n}\\n\\n.profile {\\n  display: flex;\\n  -ms-align-items: center;\\n  align-items: center;\\n  justify-content: center;\\n  height: 100vh;\\n  flex-flow: column;\\n}\\n\\nimg {\\n  border-radius: 100%;\\n  border: 5px;\\n  width: 300px;\\n  box-shadow: 0 0 20px black;\\n}\\n\\nh1 {\\n  font-size: 5em;\\n  font-family: sans-serif;\\n  color: white;\\n  text-shadow: 0 0 20px black;\\n  text-align: center;\\n}\\n\", \"\"]);\n\n// exports\n\n\n//# sourceURL=webpack:///./src/main.css?./node_modules/css-loader");
+eval("exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/lib/css-base.js */ \"./node_modules/css-loader/lib/css-base.js\")(false);\n// imports\n\n\n// module\nexports.push([module.i, \"body {\\r\\n  margin: 0;\\r\\n  background-color: #444;\\r\\n}\\r\\n\\r\\n.profile {\\r\\n  display: flex;\\r\\n  -ms-align-items: center;\\r\\n  align-items: center;\\r\\n  justify-content: center;\\r\\n  height: 100vh;\\r\\n  flex-flow: column;\\r\\n}\\r\\n\\r\\nimg {\\r\\n  border-radius: 100%;\\r\\n  border: 5px;\\r\\n  width: 300px;\\r\\n  box-shadow: 0 0 20px black;\\r\\n}\\r\\n\\r\\nh1 {\\r\\n  font-size: 5em;\\r\\n  font-family: sans-serif;\\r\\n  color: white;\\r\\n  text-shadow: 0 0 20px black;\\r\\n  text-align: center;\\r\\n}\\r\\n\", \"\"]);\n\n// exports\n\n\n//# sourceURL=webpack:///./src/main.css?./node_modules/css-loader");
 
 /***/ }),
 
@@ -133,7 +133,7 @@ eval("module.exports = __webpack_require__.p + \"images/link.jpg\";\n\n//# sourc
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = \"<html>\\n  <head>\\n  </head>\\n  <body>\\n    <div class=\\\"profile\\\">\\n      <img src=\\\"\" + __webpack_require__(/*! ./images/link.jpg */ \"./src/images/link.jpg\") + \"\\\" alt=\\\"\\\">\\n      <h1>Link's Journal</h1>\\n    </div>\\n    <script src=\\\"/main-bundle.js\\\"></script>\\n  </body>\\n</html>\\n\";\n\n//# sourceURL=webpack:///./src/index.html?");
+eval("module.exports = \"<html>\\r\\n  <head>\\r\\n  </head>\\r\\n  <body>\\r\\n    <div class=\\\"profile\\\">\\r\\n      <img src=\\\"\" + __webpack_require__(/*! ./images/link.jpg */ \"./src/images/link.jpg\") + \"\\\" alt=\\\"\\\">\\r\\n      <h1>Link's Journal</h1>\\r\\n    </div>\\r\\n    <script src=\\\"/main-bundle.js\\\"></script>\\r\\n  </body>\\r\\n</html>\\r\\n\";\n\n//# sourceURL=webpack:///./src/index.html?");
 
 /***/ }),
 
